@@ -1,21 +1,19 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void printArray(const vector<int>& arr, int n) {
-    for (int i=0; i<n; i++) {
-        cout << arr[i] << " ";
+void printArray(const vector<int>& arr) {
+    for (int x : arr) {
+        cout << x << " ";
     }
     cout << endl;
 }
 
 int solve(vector<int>& arr) {
-    if (!arr.size()) return {};
+    int res = 0;
 
-    int res = 1;
-
-    for(int i=1; i<arr.size(); i++){
-        if(!(arr[i]==arr[res-1])){
-            arr[res] = arr[i];
+    for(int i=0; i<arr.size(); i++){
+        if(arr[i]!=0){
+            swap(arr[res],arr[i]);
             res++;
         }
     }
@@ -40,7 +38,8 @@ int main() {
         }
 
         n = solve(arr);
-        printArray(arr, n);
+        
+        printArray(arr);
     }
 
     return 0;
