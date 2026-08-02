@@ -9,21 +9,23 @@ void printArray(const vector<int>& arr) {
 }
 
 int solve(vector<int>& arr) {
-    if(!arr.size()) return -1;
+    if (arr.size() < 2) return -1;
 
     int largest = arr[0];
-    int secondLargest = -1;
+    int secondLargest = INT_MIN;
 
-    for(auto x: arr){
-        if(x>largest){
+    for (int i = 1; i < arr.size(); i++) {
+        if (arr[i] > largest) {
             secondLargest = largest;
-            largest = x;
+            largest = arr[i];
+        }
+        else if (arr[i] != largest && arr[i] > secondLargest) {
+            secondLargest = arr[i];
         }
     }
 
-    return secondLargest;
+    return secondLargest == INT_MIN ? -1 : secondLargest;
 }
-
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
